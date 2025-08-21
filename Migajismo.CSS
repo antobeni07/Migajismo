@@ -1,0 +1,29 @@
+.botonLateral {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.latMenu {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 280px;
+    height: 100vh;
+    background-color: #2c3e50;
+    color: white;
+    transition: left 0.3s ease;
+    z-index: 1002;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+}
+
+.latMenu.open {
+    left:0;
+}
+
