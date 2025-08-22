@@ -1,8 +1,34 @@
+*
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    color: #333;
+}
+
+/* Estilos para los enlaces del menú lateral */
+.latMenu a {
+    color: white;          /* color de los enlaces por defecto */
+    text-decoration: none; /* quita el subrayado */
+    font-weight: bold;     /* opcional: hace que se vean más fuertes */
+}
+
+/* Cuando el enlace ya fue visitado */
+.latMenu a:visited {
+    color: white;
+}
+
+/* Cuando pasas el mouse por encima */
+.latMenu a:hover {
+    color: #ffcc00; /* ejemplo: amarillo para resaltar */
+}
+
+
+
 .barra {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #f4d03f; /* Color de la barra */
+  background: #2c3e50; /* Color de la barra */
   padding: 10px;
 }
 
@@ -30,7 +56,8 @@
   top: 0;
   width: 300px;
   height: 100%;
-  background: white;
+  background: #2c3e50;
+  color: white;
   box-shadow: 2px 0 5px rgba(0,0,0,0.3);
   transition: left 0.3s; /* Animación suave */
   z-index: 20;
@@ -39,6 +66,42 @@
 
 .latMenu.abrir {
   left: 0; /* Cuando se abre */
+}
+
+.latHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid #34495e;
+}
+
+.cerrar {
+    width: 35px;
+    height: 35px;
+    background-color: white;
+    font-size: 1.5rem;
+    color: black;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.menu {
+    list-style: none;
+    padding: 1rem 0;
+}
+
+.menu li {
+    border-bottom: 1px solid 34495e;
+    left: 30px;
+}
+
+.menu a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 1rem 1.5rem;
+    transition: background-color 0.3s ease;
 }
 
 .overlay {
