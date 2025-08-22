@@ -137,6 +137,11 @@ header {
     background-color: #34495e;
 }
 
+.separador {
+    background-color: rgba(255, 255, 255, 0.37);
+    height: 0.01rem;
+}
+
 .overlay {
     position: fixed;
     top: 0;
@@ -164,6 +169,7 @@ main {
 .grid {
     background-color: purple;
     padding: 2rem;
+    border-radius: 10%;
     display: grid;
     grid-template-columns: 50%;
     margin: 1rem;
