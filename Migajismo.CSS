@@ -3,6 +3,11 @@
     padding: 0;
 }
 
+html {
+    width: 100%;
+    background-color: #f3e5c7;
+}
+
 body {
     font-family: Arial, sans-serif;
     line-height: 1.5;
@@ -20,6 +25,7 @@ header {
     background-color: #f3e5c7;
     margin-top: 2rem;
     box-sizing: border-box;
+    width: 100%;
 }
 
 .logo {
@@ -131,6 +137,11 @@ header {
     background-color: #34495e;
 }
 
+.separador {
+    background-color: rgba(255, 255, 255, 0.37);
+    height: 0.01rem;
+}
+
 .overlay {
     position: fixed;
     top: 0;
@@ -150,13 +161,24 @@ header {
 }
 
 main {
-    max-width: 1200px;
+    width: 100%;
     margin: 2rem 1rem;
     padding: 1rem;
 }
 
+.grid {
+    background-color: purple;
+    padding: 2rem;
+    border-radius: 10%;
+    display: grid;
+    grid-template-columns: 50%;
+    margin: 1rem;
+    width: 80%;
+    gap: 1rem;
+}
+
 .who {
-    display: flex;
+    grid-column: 1 / span 2;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
@@ -168,7 +190,8 @@ main {
 }
 
 .what {
-    display: flex;
+    grid-column: 1 / span 2;
+    grid-row: 2;
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -178,24 +201,17 @@ main {
     margin-bottom: 3rem;
     background-color: #2c3e50;
     color: white;
-    border-radius: 10%;
+    border-radius: 20%;
     box-sizing: border-box;
 }
 
-.juntar {
-    display: flex;
-    gap: 2rem;
-    margin-bottom: 3rem;
-    flex-wrap: wrap;
-    align-items: center;
-    left: 20%;
+.how {
+    grid-column: 1;
+    grid-row: 3;
 }
-
-.how, .why {
-    flex: 1;
-    min-width: 300px;
-    padding: 1.5rem;
-    width: 40%;
+.why {
+    grid-column: 2;
+    grid-row: 3;
 }
 
 .encuentranos {
@@ -204,33 +220,4 @@ main {
     background-color: #f0f0f0; 
     border-radius: 10px;
     text-align: center;
-}
-
-.izquierda {
-    height: 200%;
-    position: absolute;
-    left: 0;
-    top: 13.7rem;
-    width: 32px;
-    background-color: #f3e5c7;
-    z-index: 0;
-}
-
-.derecha {
-    height: 200%;
-    position: absolute;
-    right: 0;
-    top: 13.7rem;
-    width: 32px;
-    background-color: #f3e5c7;
-    z-index: 0;
-}
-
-.abajo {
-    position: absolute;
-    width: 105%;
-    bottom: -1;
-    left: 0;
-    height: 55px;
-    background-color: #f3e5c7;
 }
