@@ -164,3 +164,47 @@ header {
 .overlay.activar {
   display: block; /* Se muestra cuando el menú está abierto */
 }
+
+#ChocoAlmendra{
+  width: 100px; /* Ajusta el tamaño de la imagen */
+  height: auto;
+  margin-right: 20px; /* Espacio entre la imagen y la información */
+
+}
+
+#ChocoChunk{
+  width: 100px; /* Ajusta el tamaño de la imagen */
+  height: auto;
+  margin-right: 20px; /* Espacio entre la imagen y la información */
+
+}
+
+#Chocomenta{
+  width: 100px; /* Ajusta el tamaño de la imagen */
+  height: auto;
+  margin-right: 20px; /* Espacio entre la imagen y la información */
+
+}
+
+#ChocoRamo{
+  width: 100px; /* Ajusta el tamaño de la imagen */
+  height: auto;
+  margin-right: 20px; /* Espacio entre la imagen y la información */
+
+}
+
+#TripleChocolate{
+  width: 100px; /* Ajusta el tamaño de la imagen */
+  height: auto;
+  margin-right: 20px; /* Espacio entre la imagen y la información */
+
+}
+
+#Vanilla{
+  width: 100px; /* Ajusta el tamaño de la imagen */
+  height: auto;
+  margin-right: 20px; /* Espacio entre la imagen y la información */
+
+}
+
+
