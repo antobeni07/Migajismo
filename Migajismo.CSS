@@ -127,6 +127,10 @@ header {
     transition: background-color 0.3s ease;
 }
 
+.menu a:hover {
+    background-color: #34495e;
+}
+
 .overlay {
     position: fixed;
     top: 0;
@@ -167,11 +171,15 @@ main {
     display: flex;
     text-align: center;
     align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
     width: 100%;
     padding: 2rem;
     margin-bottom: 3rem;
     background-color: #2c3e50;
+    color: white;
     border-radius: 10%;
+    box-sizing: border-box;
 }
 
 .juntar {
@@ -191,5 +199,38 @@ main {
 }
 
 .encuentranos {
-    
+    width: 100%;
+    padding: 2rem;
+    background-color: #f0f0f0; 
+    border-radius: 10px;
+    text-align: center;
+}
+
+.izquierda {
+    height: 200%;
+    position: absolute;
+    left: 0;
+    top: 13.7rem;
+    width: 32px;
+    background-color: #f3e5c7;
+    z-index: 0;
+}
+
+.derecha {
+    height: 200%;
+    position: absolute;
+    right: 0;
+    top: 13.7rem;
+    width: 32px;
+    background-color: #f3e5c7;
+    z-index: 0;
+}
+
+.abajo {
+    position: absolute;
+    width: 105%;
+    bottom: -1;
+    left: 0;
+    height: 55px;
+    background-color: #f3e5c7;
 }
