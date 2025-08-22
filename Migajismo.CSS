@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+html {
+    width: 100%;
+}
+
 body {
     font-family: Arial, sans-serif;
     line-height: 1.5;
@@ -150,7 +154,7 @@ header {
 }
 
 main {
-    max-width: 1200px;
+    width: 100%;
     margin: 2rem 1rem;
     padding: 1rem;
 }
