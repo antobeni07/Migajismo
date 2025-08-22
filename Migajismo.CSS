@@ -217,7 +217,14 @@ main {
 .encuentranos {
     width: 100%;
     padding: 2rem;
-    background-color: #f0f0f0; 
     border-radius: 10px;
     text-align: center;
+}
+
+.encuentranos a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 1rem 1.5rem;
+    transition: background-color 0.3s ease;
 }
