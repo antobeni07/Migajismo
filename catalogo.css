@@ -61,9 +61,9 @@ header {
     flex: 1;
     flex-wrap: wrap;
     gap: 1rem;
-    max-width: 1200px;
     background-color: #f3e5c7;
     margin-top: 2rem;
+    box-sizing: border-box;
 }
 
 .logo {
