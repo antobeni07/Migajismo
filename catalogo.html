@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo - Migajismo</title>
+  <link rel="stylesheet" href="catalogo.css">
+  <script src="migajismo.js" defer></script> <!-- para la barra -->
+  <script src="catalogo.js" defer></script>  <!-- para el carrito -->
+</head>
+<body>
+
+<nav class="barra">
+    <div class="categorias">
+        <button class="botonLateral" id="botonLateral">≡</button>
+    </div>
+
+    <aside class="latMenu" id="latMenu">
+        <div class="latHeader">
+            <h3>Menu Principal</h3>
+            <button class="cerrar" id="cerrar">x</button>
+        </div>
+
+        <ul class="menu">
+            <li>
+                <a href="Migajismo Home.html">Inicio</a>
+                <a href="catalogo.html#galletas">
+                    <img src="Galletas.jpeg" width="200" height="112" alt="Galletas" class="foto" />
+                    <h4>Galletas</h4>
+                </a>
+            </li>
+        </ul>
+    </aside>
+
+    <div class="overlay" id="overlay"></div>
+</nav>
+
+  <img src = "Logo Migajismo.png" width="120" height="120" alt = "Migajismo" class = "logo" />
+        <h1 class = "headTittle">MIGAJISMO</h1>
+        <h4 class = "headText"><i>Donde cada migaja cuenta, si tienes suficientes</i></h4>
+
+  <header>
+    <h1>Catálogo de Galletas</h1>
+  </header>
+
+  <main class="contenedorCatalogo">
+    <!-- 📦 Catálogo de Galletas -->
+    <section class="productos">
+      <h2 id="galletas">Nuestras Galletas</h2>
+      <div class="gridProductos">
+        <div class="producto">
+          <img src="Galletas.jpeg" alt="Galletas clásicas">
+          <h3>Galletas clásicas</h3>
+          <p>$5.000</p>
+          <button class="agregar" data-nombre="Galletas clásicas" data-precio="5000">Agregar</button>
+        </div>
+
+        <div class="producto">
+          <img src="Galletas.jpeg" alt="Galletas choco chip">
+          <h3>Galletas Choco Chip</h3>
+          <p>$6.000</p>
+          <button class="agregar" data-nombre="Galletas Choco Chip" data-precio="6000">Agregar</button>
+        </div>
+
+        <div class="producto">
+          <img src="Galletas.jpeg" alt="Galletas de avena">
+          <h3>Galletas de Avena</h3>
+          <p>$5.500</p>
+          <button class="agregar" data-nombre="Galletas de Avena" data-precio="5500">Agregar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🛒 Carrito -->
+    <aside class="carrito">
+      <h2>Carrito de Compras</h2>
+      <ul id="listaCarrito"></ul>
+      <p><strong>Total:</strong> $<span id="total">0</span></p>
+      <button id="finalizar">Finalizar compra</button>
+    </aside>
+  </main>
+
+</body>
+</html>

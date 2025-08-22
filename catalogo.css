@@ -1,0 +1,54 @@
+.barra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f4d03f; /* Color de la barra */
+  padding: 10px;
+}
+
+.botonLateral {
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+/*  Overlay(fondo gris) */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    z-index: 10; /* Debe estar debajo del menú lateral */
+}
+
+.latMenu {
+  position: fixed;
+  left: -300px; /* Oculto al inicio */
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background: white;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+  transition: left 0.3s; /* Animación suave */
+  z-index: 20;
+  overflow-y: auto; /*por si el contendio es mas largo*/
+}
+
+.latMenu.abrir {
+  left: 0; /* Cuando se abre */
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+}
+
+.overlay.activar {
+  display: block; /* Se muestra cuando el menú está abierto */
+}
