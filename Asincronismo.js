@@ -12,6 +12,24 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(response);
             const json = await response.json();
             const productos = json.data;
+            
+            const galletas = document.querySelector(".galletas");
+            galletas.innerHTML = '';
+            productos.forEach(prod => {
+                if (prod.Tipo === "Galleta"){
+                    const productoDiv = document.createElement('div');
+                    productoDiv.className = 'producto';
+                    productoDiv.innerHTML = `
+                    <h3>${prod.Producto}</h3>
+                    <h4>$${prod.Precio}</h4>
+                    ${prod.Imagen ? `<img src="${prod.Imagen}" alt="${prod.Producto}" loading="lazy"/>` : '<div class="sin-imagen">Sin imagen</div>'}
+                    <button class="agregar" data-nombre="${prod.Producto}" data-precio="${prod.Precio}">Agregar</button>
+                    <p>${prod.Descripcion}</p>
+                `;
+                galletas.appendChild(productoDiv);
+                }
+            })
+
             const menu = document.querySelector(".gridProductos");
 
             menu.innerHTML = '';
