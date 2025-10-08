@@ -233,7 +233,14 @@ header {
     display: inline-block;
 }
 
-.gridProductos {
+.galletas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.brownies {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
@@ -444,7 +451,12 @@ header {
         padding: 2rem;
     }
     
-    .gridProductos {
+    .galletas {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .brownies {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 1.5rem;
     }

@@ -1,54 +1,53 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Catálogo - Migajismo</title>
   <link rel="stylesheet" href="catalogo.css">
   <script src="Migajismo.js" defer></script> <!-- para la barra -->
-  <script src="catalogo.js" defer></script>  <!-- para el carrito -->
+  <script src="catalogo.js" defer></script> <!-- para el carrito -->
   <script src="Asincronismo.js" defer></script>
 </head>
+
 <body>
 
-<nav class="barra">
+  <nav class="barra">
     <div class="categorias">
-        <button class="botonLateral" id="botonLateral">≡</button>
+      <button class="botonLateral" id="botonLateral">≡</button>
     </div>
 
     <aside class="latMenu" id="latMenu">
-        <div class="latHeader">
-            <h3>Menu Principal</h3>
-            <button class="cerrar" id="cerrar">x</button>
-        </div>
+      <div class="latHeader">
+        <h3>Menu Principal</h3>
+        <button class="cerrar" id="cerrar">x</button>
+      </div>
 
-        <ul class="menu">
-            <li><a href="index.html">Volver al inicio</a></li>
-            <li><a href="catalogo.html">Seguir viendo el catálogo</a></li>
-            <li><a href="contacto.html">Contáctanos</a></li>
+      <ul class="menu">
+        <li><a href="index.html">Volver al inicio</a></li>
+        <li><a href="catalogo.html">Seguir viendo el catálogo</a></li>
+        <li><a href="contacto.html">Contáctanos</a></li>
     </aside>
 
     <div class="overlay" id="overlay"></div>
-</nav>
+  </nav>
 
 
-<header>
-  <img src = "Logo Migajismo.png" width="120" height="120" alt = "Migajismo" class = "logo" />
-  <h1 class = "headTittle">MIGAJISMO</h1>
-  <h4 class = "headText"><i>Donde cada migaja cuenta, si tienes suficientes</i></h4>
+  <header>
+    <img src="Logo Migajismo.png" width="120" height="120" alt="Migajismo" class="logo" />
+    <h1 class="headTittle">MIGAJISMO</h1>
+    <h4 class="headText"><i>Donde cada migaja cuenta, si tienes suficientes</i></h4>
   </header>
-  
+
   <main class="contenedorCatalogo">
     <section class="productos">
-      <div class="gridProductos">
-        <div class="galletas">
-          <h1>Galletas</h1>
-        </div>
+      <h1>Galletas</h1>
+      <div class="galletas"></div>
 
-        <div class="brownies">
-          <h1>Brownies</h1>
-        </div>
-        <!--
+      <h1>Brownies</h1>
+      <div class="brownies"></div>
+      <!--
           <div class="producto">
             <img src="ChocoAlmendra.png" id = "ChocoAlmendra" alt="ChocoAlmendra">
             <h3>Galleta ChocoAlmendra</h3>
@@ -91,9 +90,8 @@
           <button class="agregar" data-nombre="Galletas de VanillaConChispas" data-precio="5500">Agregar</button>
         </div>
         -->
-      </div>
     </section>
-    
+
     <!-- 🛒 Carrito -->
     <section class="carrito">
       <h2>Carrito de Compras</h2>
@@ -104,4 +102,5 @@
   </main>
 
 </body>
+
 </html>
