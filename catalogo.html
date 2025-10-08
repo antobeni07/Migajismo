@@ -99,8 +99,35 @@
       <p><strong>Total:</strong> $<span id="total">0</span></p>
       <button id="finalizar">Finalizar compra</button>
     </section>
-  </main>
+    
+    <!-- Modal para datos del cliente - AÑADIR ESTO -->
+    <div id="modalCliente" class="modal">
+      <div class="modal-contenido">
+        <h2>Finalizar Pedido</h2>
+        <form id="formCliente">
+          <div class="campo">
+            <label for="nombre">Nombre completo *</label>
+            <input type="text" id="nombre" name="nombre" required>
+          </div>
 
+          <div class="campo">
+            <label for="telefono">Teléfono *</label>
+            <input type="tel" id="telefono" name="telefono" required>
+          </div>
+
+          <div class="campo">
+            <label for="direccion">Dirección de entrega *</label>
+            <textarea id="direccion" name="direccion" rows="3" required></textarea>
+          </div>
+
+          <div class="botones-modal">
+            <button type="button" id="cancelarPedido" class="btn-cancelar">Cancelar</button>
+            <button type="submit" class="btn-confirmar">Confirmar Pedido</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
 </body>
 
 </html>

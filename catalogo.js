@@ -61,16 +61,98 @@ function finalizarPedido() {
     return;
   }
 
-  let params = new URLSearchParams();
-  carrito.forEach(item => {
-    params.append("producto", `${item.nombre}x${item.cantidad}`);
-  });
+  // Mostrar el modal
+  const modal = document.getElementById('modalCliente');
+  const form = document.getElementById('formCliente');
+  
+  modal.style.display = 'block';
 
-  params.append("total", total.textContent);
+  // Limpiar formulario
+  form.reset();
 
-  // Redirige con parámetros
-  window.location.search = params.toString();
+  // Event listener para el formulario
+  form.onsubmit = async function(e) {
+    e.preventDefault();
+    
+    const nombre = document.getElementById('nombre').value.trim();
+    const telefono = document.getElementById('telefono').value.trim();
+    const direccion = document.getElementById('direccion').value.trim();
+
+    // Validar que todos los campos estén llenos
+    if (!nombre || !telefono || !direccion) {
+      alert('Por favor, complete todos los campos obligatorios');
+      return;
+    }
+
+    // Preparar los datos del pedido
+    const productosPedido = carrito.map(item => ({
+      id: item.nombre,
+      precio: item.precio,
+      cantidad: item.cantidad
+    }));
+
+    const totalPedido = carrito.reduce((total, item) => total + (item.precio * item.cantidad), 0);
+
+    const pedido = {
+      nombre_cliente: nombre,
+      telefono_cliente: telefono,
+      direccion_cliente: direccion,
+      productos: productosPedido,
+      total_pedido: totalPedido,
+    };
+
+    try {
+      // Deshabilitar botón y mostrar loading
+      const btnConfirmar = document.querySelector('.btn-confirmar');
+      btnConfirmar.textContent = 'Enviando...';
+      btnConfirmar.disabled = true;
+
+      // Enviar pedido al servidor
+      const response = await fetch('https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLjFDjsYbtlOHFab7B6--UfJzHtkoJl8d7_mNbSV-7daT6MkmLJSQZonXbszldeyBADVASXc2KGZnnsKZphhGADew0M7iRht8LY9RPLT4kEj49qEdNcA-5LUBbnRAuxuZL0xPh7rWdppw1qoz29bMYH3zF4HraYn_RxDmsfUf81Q8rzDpjKKX4PyMWV1KYrtjZSaIyItv58qm6yMEOVsAttWBQLsYymgc1NGbjJlHLdgtUyr6cHN39Xg8zleLv7yVvgI5_EdsCUQ5ZQiG7ty2UuSQZ4VRw&lib=MeiQ3xzAzdNN_sKogUfUHNb4_lG3s3Ts6', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(pedido)
+      });
+
+      if (!response.ok) {
+        throw new Error('Error al enviar el pedido');
+      }
+
+      // Éxito
+      alert(`¡Pedido enviado con éxito!\nGracias ${nombre}, tu pedido llegará a:\n${direccion}`);
+      
+      // Cerrar modal
+      modal.style.display = 'none';
+      
+      // Limpiar carrito
+      carrito = [];
+      localStorage.removeItem('carrito');
+      renderCarrito();
+
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error al enviar el pedido. Por favor, intente nuevamente.');
+      
+      // Rehabilitar botón
+      const btnConfirmar = document.querySelector('.btn-confirmar');
+      btnConfirmar.textContent = 'Confirmar Pedido';
+      btnConfirmar.disabled = false;
+    }
+  };
+
+  // Event listener para cancelar
+  document.getElementById('cancelarPedido').onclick = function() {
+    modal.style.display = 'none';
+  };
+
+  // Cerrar modal al hacer clic fuera
+  modal.onclick = function(e) {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+    }
+  };
 }
 
 document.getElementById("finalizar").addEventListener("click", finalizarPedido);
-// js de la barra del catalogo
