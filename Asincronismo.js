@@ -21,9 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 productoDiv.className = 'producto';
                 productoDiv.innerHTML = `
                     <h3>${prod.Producto}</h3>
-                    <p>$${prod.Precio}</p>
+                    <h4>$${prod.Precio}</h4>
                     ${prod.Imagen ? `<img src="${prod.Imagen}" alt="${prod.Producto}" loading="lazy"/>` : '<div class="sin-imagen">Sin imagen</div>'}
                     <button class="agregar" data-nombre="${prod.Producto}" data-precio="${prod.Precio}">Agregar</button>
+                    <p>${prod.Descripcion}</p>
                 `;
 
                 menu.appendChild(productoDiv);

@@ -48,7 +48,6 @@ body {
     border-color: rgba(255, 255, 255, 0.5);
 }
 
-/* ===== HEADER MEJORADO ===== */
 header {
     display: flex;
     align-items: center;
@@ -94,7 +93,6 @@ header {
     text-align: center;
 }
 
-/* ===== MENÚ LATERAL MEJORADO ===== */
 .latMenu {
     position: fixed;
     top: 0;
@@ -199,6 +197,7 @@ header {
 }
 
 /* ===== CONTENEDOR PRINCIPAL DEL CATÁLOGO ===== */
+
 .contenedorCatalogo {
     max-width: 1200px;
     margin: 0 auto;
@@ -207,6 +206,7 @@ header {
     grid-template-columns: 1fr 350px;
     gap: 3rem;
     align-items: start;
+    width: 100%;
 }
 
 /* ===== PRODUCTOS MEJORADOS ===== */
@@ -294,10 +294,16 @@ header {
     font-weight: 600;
 }
 
-.producto p {
+.producto h4 {
     color: #e74c3c;
     font-size: 1.4rem;
     font-weight: bold;
+    margin: 0.5rem 0 1rem;
+}
+
+.producto p {
+    color: #2c3e50;
+    font-size: 1rem;
     margin: 0.5rem 0 1rem;
 }
 
