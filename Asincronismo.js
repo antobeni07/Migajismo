@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function getData() {
         try {
             //  Cambiar POST por GET
-            const response = await fetch("https://script.google.com/macros/s/AKfycbyAPVnHnEqlipE1Gr_b9wtgSpLy4kJWpmG9mWv3hnhr_mgRwXG8qZSz3LqVnyFFjvqV/exec", {
+            const response = await fetch("https://script.google.com/macros/s/AKfycbziDzJgw-l7vmZoRCwi25ZzmN1z3M1JcjqjDsvPCFHan-QztAwImefy0fDx22OPuPQ3/exec", {
                 method: "GET"  //  CAMBIO PRINCIPAL POST - GET
             });
             if (!response.ok) {

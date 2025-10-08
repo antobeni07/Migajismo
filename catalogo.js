@@ -2,7 +2,12 @@
 const botonesAgregar = document.querySelectorAll(".agregar");
 const listaCarrito = document.getElementById("listaCarrito");
 const total = document.getElementById("total");
-let carrito = [];
+let carrito = JSON.parse(localStorage.getItem('carrito')) || []; // 👈 Cargar carrito al inicio
+
+// Función para guardar carrito en localStorage
+function guardarCarrito() {
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+}
 
 // Función para actualizar la vista del carrito
 function renderCarrito() {
@@ -30,10 +35,11 @@ function agregarAlCarrito(nombre, precio) {
   if (existe) {
     existe.cantidad++;
   } else {
-    carrito.push({ nombre, precio, cantidad: 1 });
+    carrito.push({ nombre, precio: parseInt(precio), cantidad: 1 });
   }
 
   renderCarrito();
+  guardarCarrito(); // 👈 Guardar después de agregar
 }
 
 // Escuchar clicks en los botones "Agregar"
@@ -51,10 +57,11 @@ listaCarrito.addEventListener("click", (e) => {
     const index = e.target.dataset.index;
     carrito.splice(index, 1);
     renderCarrito();
+    guardarCarrito(); // 👈 Guardar después de eliminar
   }
 });
 
-// Finalizar pedido y enviar a query params
+// Finalizar pedido
 function finalizarPedido() {
   if (carrito.length === 0) {
     alert("El carrito está vacío");
@@ -84,7 +91,7 @@ function finalizarPedido() {
       return;
     }
 
-    // Preparar los datos del pedido
+    // Preparar los datos del pedido (formato EXACTO para tu script)
     const productosPedido = carrito.map(item => ({
       id: item.nombre,
       precio: item.precio,
@@ -93,12 +100,17 @@ function finalizarPedido() {
 
     const totalPedido = carrito.reduce((total, item) => total + (item.precio * item.cantidad), 0);
 
+    // Generar número de pedido único (como en el ejemplo)
+    const numeroPedido = Math.random().toString(36).substring(2, 9).toUpperCase();
+
     const pedido = {
+      numero_pedido: numeroPedido,
+      fecha: new Date().toISOString(),
       nombre_cliente: nombre,
       telefono_cliente: telefono,
       direccion_cliente: direccion,
-      productos: productosPedido,
-      total_pedido: totalPedido,
+      productos: JSON.stringify(productosPedido), // 👈 IMPORTANTE: stringify
+      valor_total: totalPedido
     };
 
     try {
@@ -107,21 +119,19 @@ function finalizarPedido() {
       btnConfirmar.textContent = 'Enviando...';
       btnConfirmar.disabled = true;
 
-      // Enviar pedido al servidor
-      const response = await fetch('https://api.allorigins.win/raw?url=' + encodeURIComponent('https://script.google.com/macros/echo?user_content_key=AehSKLjFDjsYbtlOHFab7B6--UfJzHtkoJl8d7_mNbSV-7daT6MkmLJSQZonXbszldeyBADVASXc2KGZnnsKZphhGADew0M7iRht8LY9RPLT4kEj49qEdNcA-5LUBbnRAuxuZL0xPh7rWdppw1qoz29bMYH3zF4HraYn_RxDmsfUf81Q8rzDpjKKX4PyMWV1KYrtjZSaIyItv58qm6yMEOVsAttWBQLsYymgc1NGbjJlHLdgtUyr6cHN39Xg8zleLv7yVvgI5_EdsCUQ5ZQiG7ty2UuSQZ4VRw&lib=MeiQ3xzAzdNN_sKogUfUHNb4_lG3s3Ts6'), {
+      console.log('Enviando pedido:', pedido); // 👈 Para debug
+
+      // 🔥 SOLUCIÓN: Usar mode: 'no-cors' como en el ejemplo
+      await fetch('https://script.google.com/macros/s/AKfycbziDzJgw-l7vmZoRCwi25ZzmN1z3M1JcjqjDsvPCFHan-QztAwImefy0fDx22OPuPQ3/exec', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        mode: 'no-cors', // 👈 ESTO EVITA EL ERROR CORS
         body: JSON.stringify(pedido)
       });
 
-      if (!response.ok) {
-        throw new Error('Error al enviar el pedido');
-      }
-
-      // Éxito
-      alert(`¡Pedido enviado con éxito!\nGracias ${nombre}, tu pedido llegará a:\n${direccion}`);
+      // Éxito - asumimos que se envió correctamente
+      alert(`¡Pedido enviado con éxito!\n
+        Número de pedido: ${numeroPedido}\n
+        Gracias ${nombre}, tu pedido llegará a:\n${direccion}`);
 
       // Cerrar modal
       modal.style.display = 'none';
@@ -131,8 +141,11 @@ function finalizarPedido() {
       localStorage.removeItem('carrito');
       renderCarrito();
 
+      btnConfirmar.textContent = 'Confirmar Pedido';
+      btnConfirmar.disabled = false;
+
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error completo:', error);
       alert('Error al enviar el pedido. Por favor, intente nuevamente.');
 
       // Rehabilitar botón
@@ -154,5 +167,10 @@ function finalizarPedido() {
     }
   };
 }
+
+// Inicializar carrito al cargar la página
+document.addEventListener("DOMContentLoaded", function () {
+  renderCarrito(); // 👈 Mostrar carrito guardado
+});
 
 document.getElementById("finalizar").addEventListener("click", finalizarPedido);
