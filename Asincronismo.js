@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             const brownies = document.querySelector(".brownies");
-            galletas.innerHTML = '';
+            brownies.innerHTML = '';
             
             productos.forEach(prod => {
                 if (prod.Tipo === "Brownie"){
