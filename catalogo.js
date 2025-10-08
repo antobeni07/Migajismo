@@ -1,8 +1,8 @@
 // Elementos principales
-const botonesAgregar = document.querySelectorAll(".agregar"); 
-const listaCarrito = document.getElementById("listaCarrito"); 
-const total = document.getElementById("total"); 
-let carrito = []; 
+const botonesAgregar = document.querySelectorAll(".agregar");
+const listaCarrito = document.getElementById("listaCarrito");
+const total = document.getElementById("total");
+let carrito = [];
 
 // Función para actualizar la vista del carrito
 function renderCarrito() {
@@ -64,16 +64,16 @@ function finalizarPedido() {
   // Mostrar el modal
   const modal = document.getElementById('modalCliente');
   const form = document.getElementById('formCliente');
-  
+
   modal.style.display = 'block';
 
   // Limpiar formulario
   form.reset();
 
   // Event listener para el formulario
-  form.onsubmit = async function(e) {
+  form.onsubmit = async function (e) {
     e.preventDefault();
-    
+
     const nombre = document.getElementById('nombre').value.trim();
     const telefono = document.getElementById('telefono').value.trim();
     const direccion = document.getElementById('direccion').value.trim();
@@ -108,7 +108,7 @@ function finalizarPedido() {
       btnConfirmar.disabled = true;
 
       // Enviar pedido al servidor
-      const response = await fetch('https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLjFDjsYbtlOHFab7B6--UfJzHtkoJl8d7_mNbSV-7daT6MkmLJSQZonXbszldeyBADVASXc2KGZnnsKZphhGADew0M7iRht8LY9RPLT4kEj49qEdNcA-5LUBbnRAuxuZL0xPh7rWdppw1qoz29bMYH3zF4HraYn_RxDmsfUf81Q8rzDpjKKX4PyMWV1KYrtjZSaIyItv58qm6yMEOVsAttWBQLsYymgc1NGbjJlHLdgtUyr6cHN39Xg8zleLv7yVvgI5_EdsCUQ5ZQiG7ty2UuSQZ4VRw&lib=MeiQ3xzAzdNN_sKogUfUHNb4_lG3s3Ts6', {
+      const response = await fetch('https://api.allorigins.win/raw?url=' + encodeURIComponent('https://script.google.com/macros/echo?user_content_key=AehSKLjFDjsYbtlOHFab7B6--UfJzHtkoJl8d7_mNbSV-7daT6MkmLJSQZonXbszldeyBADVASXc2KGZnnsKZphhGADew0M7iRht8LY9RPLT4kEj49qEdNcA-5LUBbnRAuxuZL0xPh7rWdppw1qoz29bMYH3zF4HraYn_RxDmsfUf81Q8rzDpjKKX4PyMWV1KYrtjZSaIyItv58qm6yMEOVsAttWBQLsYymgc1NGbjJlHLdgtUyr6cHN39Xg8zleLv7yVvgI5_EdsCUQ5ZQiG7ty2UuSQZ4VRw&lib=MeiQ3xzAzdNN_sKogUfUHNb4_lG3s3Ts6'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -122,10 +122,10 @@ function finalizarPedido() {
 
       // Éxito
       alert(`¡Pedido enviado con éxito!\nGracias ${nombre}, tu pedido llegará a:\n${direccion}`);
-      
+
       // Cerrar modal
       modal.style.display = 'none';
-      
+
       // Limpiar carrito
       carrito = [];
       localStorage.removeItem('carrito');
@@ -134,7 +134,7 @@ function finalizarPedido() {
     } catch (error) {
       console.error('Error:', error);
       alert('Error al enviar el pedido. Por favor, intente nuevamente.');
-      
+
       // Rehabilitar botón
       const btnConfirmar = document.querySelector('.btn-confirmar');
       btnConfirmar.textContent = 'Confirmar Pedido';
@@ -143,12 +143,12 @@ function finalizarPedido() {
   };
 
   // Event listener para cancelar
-  document.getElementById('cancelarPedido').onclick = function() {
+  document.getElementById('cancelarPedido').onclick = function () {
     modal.style.display = 'none';
   };
 
   // Cerrar modal al hacer clic fuera
-  modal.onclick = function(e) {
+  modal.onclick = function (e) {
     if (e.target === modal) {
       modal.style.display = 'none';
     }
