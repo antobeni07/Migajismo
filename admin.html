@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Panel Empleado - Pedidos</title>
+  <style>
+    body {font-family: Arial, Helvetica, sans-serif;background:#f5f6f8;padding:20px}
+    header {display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+    .card {background:#fff;padding:12px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.06);margin-bottom:12px}
+    table {width:100%;border-collapse:collapse}
+    th,td {padding:8px;border-bottom:1px solid #eee;text-align:left}
+    .btn {padding:6px 10px;border-radius:6px;border:0;cursor:pointer}
+    .btn-primary {background:#0b79d0;color:white}
+    .btn-secondary {background:#e0e0e0}
+    .filter {margin-right:8px}
+    .meta {font-size:13px;color:#666}
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h2>Panel de Pedidos</h2>
+      <div class="meta">Ver y gestionar pedidos - Empleado</div>
+    </div>
+    <div>
+      <select id="filterEstado" class="filter">
+        <option value="">Todos</option>
+        <option value="Pendiente">Pendiente</option>
+        <option value="En preparacion">En preparacion</option>
+        <option value="Enviado">Enviado</option>
+        <option value="Entregado">Entregado</option>
+        <option value="Cancelado">Cancelado</option>
+      </select>
+      <button id="btnLogout" class="btn btn-secondary">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <div id="lista"></div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>
