@@ -1,5 +1,4 @@
 // Elementos principales
-const botonesAgregar = document.querySelectorAll(".agregar");
 const listaCarrito = document.getElementById("listaCarrito");
 const total = document.getElementById("total");
 let carrito = JSON.parse(localStorage.getItem('carrito')) || []; // 👈 Cargar carrito al inicio
@@ -41,15 +40,6 @@ function agregarAlCarrito(nombre, precio) {
   renderCarrito();
   guardarCarrito(); // 👈 Guardar después de agregar
 }
-
-// Escuchar clicks en los botones "Agregar"
-botonesAgregar.forEach(boton => {
-  boton.addEventListener("click", () => {
-    const nombre = boton.dataset.nombre;
-    const precio = parseInt(boton.dataset.precio);
-    agregarAlCarrito(nombre, precio);
-  });
-});
 
 // Eliminar productos
 listaCarrito.addEventListener("click", (e) => {
@@ -129,9 +119,16 @@ function finalizarPedido() {
       });
 
       // Éxito - asumimos que se envió correctamente
-      alert(`¡Pedido enviado con éxito!\n
-        Número de pedido: ${numeroPedido}\n
-        Gracias ${nombre}, tu pedido llegará a:\n${direccion}`);
+      // Mostrar modal elegante
+      document.getElementById("textoConfirmacion").innerText =
+        `Número de pedido: ${numeroPedido}\nGracias ${nombre}, tu pedido llegará a:\n${direccion}`;
+
+      document.getElementById("modalConfirmacion").style.display = "flex";
+
+      document.getElementById("cerrarConfirmacion").onclick = () => {
+        document.getElementById("modalConfirmacion").style.display = "none";
+      };
+
 
       // Cerrar modal
       modal.style.display = 'none';
@@ -181,40 +178,40 @@ const btnLogin = document.getElementById("btnLogin");
 const loginCerrar = document.getElementById("loginCerrar");
 
 if (btnLogin) {
-    btnLogin.addEventListener("click", (e) => {
-        e.preventDefault(); // evita que se comporte como <a>
-        e.stopPropagation(); // evita que el click lo capture otro elemento
+  btnLogin.addEventListener("click", (e) => {
+    e.preventDefault(); // evita que se comporte como <a>
+    e.stopPropagation(); // evita que el click lo capture otro elemento
 
-        loginModal.style.visibility = "visible";
-        loginModal.style.opacity = "1";
-    });
+    loginModal.style.visibility = "visible";
+    loginModal.style.opacity = "1";
+  });
 }
 
 if (loginCerrar) {
-    loginCerrar.addEventListener("click", () => {
-        loginModal.style.visibility = "hidden";
-        loginModal.style.opacity = "0";
-    });
+  loginCerrar.addEventListener("click", () => {
+    loginModal.style.visibility = "hidden";
+    loginModal.style.opacity = "0";
+  });
 }
 
 document.getElementById("loginEnviar").addEventListener("click", async () => {
 
-    const correo = document.getElementById("loginCorreo").value;
-    const password = document.getElementById("loginPassword").value;
+  const correo = document.getElementById("loginCorreo").value;
+  const password = document.getElementById("loginPassword").value;
 
-    const res = await fetch("http://localhost:8080/api/login", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({correo, password})
-    });
+  const res = await fetch("http://localhost:8080/api/auth/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ correo, password })
+  });
 
-    const data = await res.json();
+  const data = await res.json();
 
-    if (data.ok) {
-        alert("Bienvenido " + data.nombre);
-        loginModal.style.visibility = "hidden";
-        loginModal.style.opacity = "0";
-    } else {
-        alert("Credenciales incorrectas");
-    }
+  if (data.ok) {
+    alert("Bienvenido " + data.nombre);
+    loginModal.style.visibility = "hidden";
+    loginModal.style.opacity = "0";
+  } else {
+    alert("Credenciales incorrectas");
+  }
 });

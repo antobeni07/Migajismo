@@ -451,6 +451,7 @@ button:focus, a:focus {
     cursor: pointer;
     border-radius: 8px;
     transition: 0.3s;
+    z-index: 1000;
 }
 
 .loginBox button:hover {
@@ -459,4 +460,36 @@ button:focus, a:focus {
 
 .cerrarLogin {
     background: #7f8c8d !important;
+}
+
+/* ===== LOGIN TOP BUTTON ===== */
+
+.navRight {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.btnLoginTop {
+    padding: 0.5rem 1rem;
+    background: rgba(255,255,255,0.15);
+    color: white;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-size: 1rem;
+    backdrop-filter: blur(6px);
+}
+
+.btnLoginTop:hover {
+    background: rgba(255,255,255,0.25);
+    transform: translateY(-50%) scale(1.05);
+}
+
+@media (max-width: 480px) {
+    .btnLoginTop {
+        display: none;
+    }
 }

@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Catálogo - Migajismo</title>
   <link rel="stylesheet" href="catalogo.css">
-  <script src="Migajismo.js" defer></script> <!-- para la barra -->
   <script src="catalogo.js" defer></script> <!-- para el carrito -->
+  <script src="Migajismo.js" defer></script> <!-- para la barra -->
   <script src="Asincronismo.js" defer></script>
 </head>
 
@@ -18,6 +18,10 @@
       <button class="botonLateral" id="botonLateral">≡</button>
     </div>
 
+    <div class="navRight">
+      <button id="btnLogin" class="loginBoton">Iniciar Sesión</button>
+    </div>
+
     <aside class="latMenu" id="latMenu">
       <div class="latHeader">
         <h3>Menu Principal</h3>
@@ -25,15 +29,11 @@
       </div>
 
       <ul class="menu">
-        <li><button id="btnLogin" class="loginBoton">Iniciar Sesión</button></li>
         <li><a href="index.html">Volver al inicio</a></li>
         <li><a href="catalogo.html">Seguir viendo el catálogo</a></li>
         <li><a href="contacto.html">Contáctanos</a></li>
     </aside>
-
-    <div class="overlay" id="overlay"></div>
   </nav>
-
 
   <header>
     <img src="Logo Migajismo.png" width="120" height="120" alt="Migajismo" class="logo" />
@@ -57,49 +57,6 @@
 
       <h1><br>Brownies</h1>
       <div class="brownies"></div>
-      <!--
-          <div class="producto">
-            <img src="ChocoAlmendra.png" id = "ChocoAlmendra" alt="ChocoAlmendra">
-            <h3>Galleta ChocoAlmendra</h3>
-            <p>$5.000</p>
-            <button class="agregar" data-nombre="Galletas ChocoAlmendra" data-precio="5000">Agregar</button>
-          </div>
-          
-          <div class="producto">
-            <img src="ChocoChunk.png" id="ChocoChunk" alt="ChocoChunk">
-            <h3>Galletas ChocoChunk</h3>
-            <p>$6.000</p>
-            <button class="agregar" data-nombre="Galleta ChocoChunk" data-precio="6000">Agregar</button>
-        </div>
-        
-        <div class="producto">
-          <img src="Chocomenta.png" id="Chocomenta" alt="Galletas de avena">
-          <h3>Galletas de Chocomenta</h3>
-          <p>$5.500</p>
-          <button class="agregar" data-nombre="Galletas de Chocomenta" data-precio="5500">Agregar</button>
-        </div>
-        
-        <div class="producto">
-          <img src="ChocoRamo.png" id="ChocoRamo" alt="Galletas de chocoramo">
-          <h3>Galletas de ChocoRamo</h3>
-          <p>$5.500</p>
-          <button class="agregar" data-nombre="Galletas de Chocomenta" data-precio="5500">Agregar</button>
-        </div>
-        
-        <div class="producto">
-          <img src="TripeChocolate.png" id="TripleChocolate" alt="Galletas de TripleChocolate">
-          <h3>Galletas de TripleChocolate</h3>
-          <p>$5.500</p>
-          <button class="agregar" data-nombre="Galletas de TripeChocolate" data-precio="5500">Agregar</button>
-        </div>
-        
-        <div class="producto">
-          <img src="VanillaConChispas.png" id="Vanilla" alt="Galletas de VanillaConChispas">
-          <h3>Galletas de VanillaConChispas</h3>
-          <p>$5.500</p>
-          <button class="agregar" data-nombre="Galletas de VanillaConChispas" data-precio="5500">Agregar</button>
-        </div>
-        -->
     </section>
 
     <!-- 🛒 Carrito -->
@@ -147,6 +104,13 @@
       <input type="password" id="loginPassword" placeholder="Contraseña" required>
       <button id="loginEnviar">Ingresar</button>
       <button id="loginCerrar" class="cerrarLogin">Cancelar</button>
+    </div>
+  </div>
+  <div id="modalConfirmacion" class="overlayConfirm">
+    <div class="boxConfirmacion">
+      <h2>¡Pedido enviado con éxito! 🎉</h2>
+      <p id="textoConfirmacion"></p>
+      <button id="cerrarConfirmacion">Cerrar</button>
     </div>
   </div>
 
