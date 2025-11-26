@@ -23,62 +23,71 @@ document.addEventListener("keydown", (e) => {
 });
 
 
-// ================= LOGIN =================
+// ===================== LOGIN MEJORADO =====================
 const loginModal = document.getElementById("loginModal");
 const btnLogin = document.getElementById("btnLogin");
 const loginCerrar = document.getElementById("loginCerrar");
 const loginEnviar = document.getElementById("loginEnviar");
 
-// ABRIR LOGIN
-btnLogin?.addEventListener("click", (e) => {
+// Abrir modal
+if (btnLogin) {
+  btnLogin.addEventListener("click", (e) => {
     e.preventDefault();
     e.stopPropagation();
-
-    // cerrar menú si está abierto
-    cerrarMenu();
-
     loginModal.style.visibility = "visible";
     loginModal.style.opacity = "1";
-});
+  });
+}
 
-// CERRAR LOGIN
-loginCerrar?.addEventListener("click", () => {
+// Cerrar modal
+if (loginCerrar) {
+  loginCerrar.addEventListener("click", () => {
     loginModal.style.visibility = "hidden";
     loginModal.style.opacity = "0";
-});
+  });
+}
 
-// ENVIAR LOGIN
-loginEnviar?.addEventListener("click", async () => {
+// Enviar login
+if (loginEnviar) {
+  loginEnviar.addEventListener("click", async () => {
+    const correo = document.getElementById("loginCorreo").value.trim();
+    const password = document.getElementById("loginPassword").value.trim();
 
-    const correo = document.getElementById("loginCorreo").value;
-    const password = document.getElementById("loginPassword").value;
+    if (!correo || !password) {
+      alert("Debe llenar ambos campos");
+      return;
+    }
 
     try {
-        const res = await fetch("http://localhost:8080/api/auth/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ correo, password })
-        });
+      const res = await fetch("http://localhost:8080/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            username: correo,
+            password: password
+        })
+      });
 
-        if (!res.ok) {
-            alert("Credenciales incorrectas");
-            return;
-        }
+      if (!res.ok) {
+        alert("Credenciales incorrectas");
+        return;
+      }
 
-        const data = await res.json();
+      const data = await res.json();
 
-        // GUARDAR LOGIN
-        localStorage.setItem("empleadoLogueado", data.correo);
+      // Guardar sesión
+      localStorage.setItem("empleadoLogueado", JSON.stringify(data));
 
-        // CERRAR MODAL
-        loginModal.style.visibility = "hidden";
-        loginModal.style.opacity = "0";
+      // Cerrar modal
+      loginModal.style.visibility = "hidden";
+      loginModal.style.opacity = "0";
 
-        // REDIRIGIR
-        window.location.href = "admin.html";
+      // Ir al panel admin
+      window.location.href = "admin.html";
 
-    } catch (err) {
-        console.log("Error en login:", err);
-        alert("Error de conexión con el servidor");
+    } catch (error) {
+      console.error("Error login:", error);
+      alert("Error conectando al servidor");
     }
-});
+  });
+}
