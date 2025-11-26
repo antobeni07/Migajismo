@@ -24,6 +24,7 @@
                 </div>
 
                 <ul class="menu">
+                    <li><button id="btnLogin" class="loginBoton">Iniciar Sesión</button></li>
                     <li><a href="index.html">Volver al inicio</a></li>
                     <li><a href="catalogo.html">Seguir viendo el catálogo</a></li>
                     <li><a href="contacto.html">Contáctanos</a></li>
@@ -56,5 +57,17 @@
             </section>
         </div>
     </main>
+
+    <!-- ===== MODAL LOGIN ===== -->
+    <div id="loginModal" class="overlay" style="visibility: hidden; opacity: 0;">
+        <div class="loginBox">
+            <h2>Iniciar Sesión</h2>
+            <input type="email" id="loginCorreo" placeholder="Correo" required>
+            <input type="password" id="loginPassword" placeholder="Contraseña" required>
+            <button id="loginEnviar">Ingresar</button>
+            <button id="loginCerrar" class="cerrarLogin">Cancelar</button>
+        </div>
+    </div>
 </body>
+
 </html>

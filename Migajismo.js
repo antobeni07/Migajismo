@@ -22,39 +22,47 @@ document.addEventListener("keydown", (e) => {
         cerrarMenu();
     }
 })
-// ---- LOGIN EMPLEADO ---- //
+
+// ===== LOGIN =====
 const loginModal = document.getElementById("loginModal");
-const btnAbrirLogin = document.getElementById("btnAbrirLogin");
-const btnCerrarLogin = document.getElementById("btnCerrarLogin");
-const btnLoginEmpleado = document.getElementById("btnLoginEmpleado");
+const btnLogin = document.getElementById("btnLogin");
+const loginCerrar = document.getElementById("loginCerrar");
 
-btnAbrirLogin.addEventListener("click", () => {
-    loginModal.style.display = "flex";
-});
+if (btnLogin) {
+    btnLogin.addEventListener("click", (e) => {
+        e.preventDefault(); // evita que se comporte como <a>
+        e.stopPropagation(); // evita que el click lo capture otro elemento
 
-btnCerrarLogin.addEventListener("click", () => {
-    loginModal.style.display = "none";
-});
+        loginModal.style.visibility = "visible";
+        loginModal.style.opacity = "1";
+    });
+}
 
-btnLoginEmpleado.addEventListener("click", async () => {
-    const username = document.getElementById("loginUser").value.trim();
-    const password = document.getElementById("loginPass").value.trim();
-    const error = document.getElementById("loginError");
+if (loginCerrar) {
+    loginCerrar.addEventListener("click", () => {
+        loginModal.style.visibility = "hidden";
+        loginModal.style.opacity = "0";
+    });
+}
 
-    const res = await fetch("http://localhost:8080/api/auth/login", {
+document.getElementById("loginEnviar").addEventListener("click", async () => {
+
+    const correo = document.getElementById("loginCorreo").value;
+    const password = document.getElementById("loginPassword").value;
+
+    const res = await fetch("http://localhost:8080/api/login", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({username, password})
+        body: JSON.stringify({correo, password})
     });
 
-    if (!res.ok) {
-        error.textContent = "Usuario o contraseña incorrectos";
-        error.style.display = "block";
-        return;
+    const data = await res.json();
+
+    if (data.ok) {
+        alert("Bienvenido " + data.nombre);
+        loginModal.style.visibility = "hidden";
+        loginModal.style.opacity = "0";
+    } else {
+        alert("Credenciales incorrectas");
     }
-
-    const empleado = await res.json();
-    localStorage.setItem("empleado", JSON.stringify(empleado));
-
-    window.location.href = "admin.html"; // ir al panel de pedidos
 });

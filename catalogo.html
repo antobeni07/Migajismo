@@ -25,6 +25,7 @@
       </div>
 
       <ul class="menu">
+        <li><button id="btnLogin" class="loginBoton">Iniciar Sesión</button></li>
         <li><a href="index.html">Volver al inicio</a></li>
         <li><a href="catalogo.html">Seguir viendo el catálogo</a></li>
         <li><a href="contacto.html">Contáctanos</a></li>
@@ -39,6 +40,15 @@
     <h1 class="headTittle">MIGAJISMO</h1>
     <h4 class="headText"><i>Donde cada migaja cuenta, si tienes suficientes</i></h4>
   </header>
+
+  <div id="loader" class="loader-container">
+    <div class="spinner"></div>
+    <p>Cargando catálogo...</p>
+  </div>
+
+  <div id="catalogo" style="display:none;">
+    <!-- El catálogo que se llena con el spreadsheet -->
+  </div>
 
   <main class="contenedorCatalogo">
     <section class="productos">
@@ -99,7 +109,7 @@
       <p><strong>Total:</strong> $<span id="total">0</span></p>
       <button id="finalizar">Finalizar compra</button>
     </section>
-    
+
     <!-- Modal para datos del cliente - AÑADIR ESTO -->
     <div id="modalCliente" class="modal">
       <div class="modal-contenido">
@@ -128,6 +138,18 @@
       </div>
     </div>
   </main>
+
+  <!-- ===== MODAL LOGIN ===== -->
+  <div id="loginModal" class="overlay" style="visibility: hidden; opacity: 0;">
+    <div class="loginBox">
+      <h2>Iniciar Sesión</h2>
+      <input type="email" id="loginCorreo" placeholder="Correo" required>
+      <input type="password" id="loginPassword" placeholder="Contraseña" required>
+      <button id="loginEnviar">Ingresar</button>
+      <button id="loginCerrar" class="cerrarLogin">Cancelar</button>
+    </div>
+  </div>
+
 </body>
 
 </html>

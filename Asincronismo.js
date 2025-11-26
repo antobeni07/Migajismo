@@ -1,3 +1,8 @@
+function hideLoader() {
+    document.getElementById("loader").style.display = "none";
+    document.getElementById("catalogo").style.display = "block";
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     async function getData() {
         try {
@@ -12,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(response);
             const json = await response.json();
             const productos = json.data;
+            hideLoader();
             
             const galletas = document.querySelector(".galletas");
             galletas.innerHTML = '';

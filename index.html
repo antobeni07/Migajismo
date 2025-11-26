@@ -23,10 +23,10 @@
                 </div>
 
                 <ul class="menu">
+                    <li><button id="btnLogin" class="loginBoton">Iniciar Sesión</button></li>
                     <li><a href="index.html">Volver al inicio</a></li>
                     <li><a href="catalogo.html">Ver el catálogo</a></li>
                     <li><a href="contacto.html">Contáctanos</a></li>
-                    <li><a href="#" id="btnAbrirLogin">Login Empleado</a></li>
 
             </aside>
 
@@ -108,17 +108,6 @@
             <br>
             </section>
     </footer>
-    <!-- Modal Login -->
-<div id="loginModal" style="
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.55);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-">
     <div style="
         background: white;
         width: 300px;
@@ -141,8 +130,20 @@
 
         <p id="loginError" style="color:red;display:none;margin-top:10px;"></p>
     </div>
-</div>
+    </div>
+
+    <!-- ===== MODAL LOGIN ===== -->
+    <div id="loginModal" class="overlay" style="visibility: hidden; opacity: 0;">
+        <div class="loginBox">
+            <h2>Iniciar Sesión</h2>
+            <input type="email" id="loginCorreo" placeholder="Correo" required>
+            <input type="password" id="loginPassword" placeholder="Contraseña" required>
+            <button id="loginEnviar">Ingresar</button>
+            <button id="loginCerrar" class="cerrarLogin">Cancelar</button>
+        </div>
+    </div>
 
 </body>
 <!-- Logo generado con IA-->
+
 </html>
